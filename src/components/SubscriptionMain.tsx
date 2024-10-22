@@ -34,7 +34,7 @@ function SubscriptionMain() {
 
     return (
         <div>
-            <Slider />
+            <Slider setStep={setStep}/>
             {step === stepContent.length ?
                 <ThankYouScreen /> :
                 <FormContainer step={step} title={title} description={description} />

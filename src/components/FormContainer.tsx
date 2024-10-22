@@ -106,10 +106,22 @@ const FormContainer = ({ title, description, step }: FormContainerProps) => {
         <div>
             <h2>{title}</h2>
             <p>{description}</p>
+            {
+                step === 0 && 
             <FormSelectionPersonal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
+            }
+            {
+                step === 1 &&
             <FormSelectionPlan selectedPlan={selectedPlan} setSelectedPlan={setSelectedPlan} planDuration={planDuration} setPlanDuration={setPlanDuration} planCosts={planCosts} />
+            }
+            {
+                step === 2 &&
             <FormSelectionAddOns addOns={addOns} setAddOns={setAddOns}/>
+            }
+            {
+                step === 3 &&
             <OrderSummary selectedPlan={selectedPlan} planDuration={planDuration} addOns={addOns} planCosts={planCosts} />
+            }
         </div>
     );
 }

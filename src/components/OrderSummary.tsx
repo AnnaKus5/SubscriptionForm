@@ -65,7 +65,7 @@ const OrderSummary = ({selectedPlan, planDuration, addOns, planCosts} : OrderSum
         <div>
             <div>
             <p>{planName} ({planDuration === "month" ? "Monthly": "Yearly"})</p>
-            {/* not link, p element with onClick event? */}
+            {/* not link, p element with onClick event? setStep(2) -> move to choosePlan view*/}
             <p><a href="">Change</a></p>
             </div>
             <p>${planCosts[selectedPlan][planDuration]}/{planDuration === "month" ? "mo" : "yr"}</p>
