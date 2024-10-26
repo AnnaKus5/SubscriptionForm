@@ -6,7 +6,7 @@ import ThankYouScreen from "./ThankYouScreen"
 
 function SubscriptionMain() {
 
-    const [step, setStep] = useState(0)
+    const [step, setStep] = useState(1)
 
     const stepContent = [
         {
@@ -29,18 +29,25 @@ function SubscriptionMain() {
 
     const isValid = step >= 0 && step < stepContent.length
 
-    const { title, description } = isValid ? stepContent[step] : { title: "", description: ""}
+    const { title, description } = isValid ? stepContent[step] : { title: "", description: "" }
 
 
     return (
         <div>
-            <Slider setStep={setStep}/>
-            {step === stepContent.length ?
-                <ThankYouScreen /> :
-                <FormContainer step={step} title={title} description={description} />
+            <div className="bg-magnolia text-marineblue">
+                <Slider setStep={setStep} step={step} />
+                {step === stepContent.length ?
+                    <ThankYouScreen /> :
+                    <FormContainer step={step} setStep={setStep} title={title} description={description} />
+                }
+            </div>
+            {
+                step < 4 &&            
+            <div className="flex justify-between">
+                <Button step={step} setStep={setStep} direction="back" />
+                <Button step={step} setStep={setStep} direction="next" />
+            </div>
             }
-            {(step > 0 && step < stepContent.length) && <Button step={step} setStep={setStep} direction="back"/>}
-            {step < stepContent.length && <Button step={step} setStep={setStep} direction="next"/>}
         </div>
     )
 }

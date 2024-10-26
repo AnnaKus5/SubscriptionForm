@@ -1,13 +1,11 @@
-import { useState } from 'react'
-import SubscriptionConfig from './components/SubscriptionMain'
 import './App.css'
+import SubscriptionMain from './components/SubscriptionMain'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <SubscriptionConfig/>
+      <SubscriptionMain/>
     </>
   )
 }

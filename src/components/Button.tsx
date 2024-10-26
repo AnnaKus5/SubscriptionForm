@@ -27,7 +27,15 @@ const Button: React.FC<ButtonProps> = ({ step, setStep, direction }) => {
 
 
     return (
-      <button onClick={handleClick}>{getButtonLabel()}</button>
+        <div className="flex justify-start font-sans font-bold">
+            <button
+                onClick={handleClick}
+                className={`p-2 m-2 font-sans py-2 rounded-lg hover:cursor-pointer
+                    ${direction === "back" && step === 0 ? "hidden" : ""}
+                    ${direction === "back" ? "bg-white text-coolGray hover:text-marineblue" : "bg-marineblue text-white hover:bg-purplishblue"}`}>
+                {getButtonLabel()}
+            </button>
+        </div>
     )
 }
 

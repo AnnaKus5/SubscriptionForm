@@ -11,6 +11,7 @@ interface FormContainerProps {
     title: string
     description: string
     step: number
+    setStep: React.Dispatch<React.SetStateAction<number>>
 }
 
 type SelectedPlan = "arcade" | "advanced" | "pro"
@@ -50,7 +51,7 @@ interface PlanCostStructure {
     additional: AdditionalCosts
 }
 
-const FormContainer = ({ title, description, step }: FormContainerProps) => {
+const FormContainer = ({ title, description, step, setStep }: FormContainerProps) => {
 
     // state from user answers 
 
@@ -103,25 +104,27 @@ const FormContainer = ({ title, description, step }: FormContainerProps) => {
 
 
     return (
-        <div>
-            <h2>{title}</h2>
-            <p>{description}</p>
+        <div className="m-4 p-2 bg-white font-sans rounded-lg relative -top-24">
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">{title}</h2>
+            <p className="text-gray-500 text-left mb-6">{description}</p>
+            <form className="">
             {
                 step === 0 && 
-            <FormSelectionPersonal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
+                <FormSelectionPersonal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
             }
             {
                 step === 1 &&
-            <FormSelectionPlan selectedPlan={selectedPlan} setSelectedPlan={setSelectedPlan} planDuration={planDuration} setPlanDuration={setPlanDuration} planCosts={planCosts} />
+                <FormSelectionPlan selectedPlan={selectedPlan} setSelectedPlan={setSelectedPlan} planDuration={planDuration} setPlanDuration={setPlanDuration} planCosts={planCosts} />
             }
             {
                 step === 2 &&
-            <FormSelectionAddOns addOns={addOns} setAddOns={setAddOns}/>
+                <FormSelectionAddOns  addOns={addOns} setAddOns={setAddOns} planCosts={planCosts} planDuration={planDuration}/>
             }
             {
                 step === 3 &&
-            <OrderSummary selectedPlan={selectedPlan} planDuration={planDuration} addOns={addOns} planCosts={planCosts} />
+                <OrderSummary setStep={setStep} selectedPlan={selectedPlan} planDuration={planDuration} addOns={addOns} planCosts={planCosts} />
             }
+            </form>
         </div>
     );
 }
