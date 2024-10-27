@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 
 interface TextInputProps {
-    title: string;
+    title: "name" | "email" | "phone"    
     placeholder: string;
     personalInfo: {
         name: string
@@ -27,12 +27,14 @@ const TextInput = ({ title, placeholder, personalInfo, setPersonalInfo }: TextIn
         )
     }
 
+    const titleUi = title.charAt(0).toUpperCase() + title.slice(1)
+
     return (
         <div className="mb-4">
-            <label htmlFor={title} className="block text-left text-gray-700 font-sans text-xs">{title}</label>
+            <label htmlFor={title} className="block text-left text-gray-700 font-sans text-xs">{titleUi}</label>
             <input 
                 type="text" 
-                // add value property
+                value={personalInfo[title]}
                 name={title} 
                 placeholder={placeholder} 
                 onChange={handleInputChange} 

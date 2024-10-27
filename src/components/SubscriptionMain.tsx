@@ -6,7 +6,7 @@ import ThankYouScreen from "./ThankYouScreen"
 
 function SubscriptionMain() {
 
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(0)
 
     const stepContent = [
         {
